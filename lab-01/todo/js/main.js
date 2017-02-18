@@ -43,6 +43,10 @@ Observer.on('action', action => {
       selectedList.items.splice(action.index, 1);
       break;
 
+    case 'TOGGLE_ITEM':
+      selectedList.items[action.index].done = !selectedList.items[action.index].done;
+      break;
+
     case 'ADD_LIST':
       let newList = {
         title: action.title,
@@ -61,6 +65,7 @@ Observer.on('action', action => {
     case 'SELECT_LIST':
       state.selectedList = action.index;
       break;
+
   }
 
   renderHTML(state)

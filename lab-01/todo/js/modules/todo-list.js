@@ -35,5 +35,13 @@ let TodoList = {
       type: 'REMOVE_ITEM',
       index
     });
+  },
+
+  toggleItem(index, value) {
+    Observer.publish('action', {
+      type: 'TOGGLE_ITEM',
+      index,
+      value
+    });
   }
 }
