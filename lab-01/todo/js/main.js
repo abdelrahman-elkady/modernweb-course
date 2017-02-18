@@ -40,9 +40,8 @@ Observer.on('action', action => {
       break;
 
     case 'REMOVE_ITEM':
-      selectedList.items = selectedList.items.filter(item => {
-        return item.text !== action.item.text && item.done !== action.item.done;
-      });
+
+      selectedList.items.splice(action.index, 1);
 
       break;
 

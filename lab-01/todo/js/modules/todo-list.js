@@ -8,7 +8,7 @@ let TodoList = {
         <button type="button" class="create-todo__submit-btn secondary-bg-color" onclick="TodoList.addItem(todoList)">+</button>
       </div>
       <ul class="todo-list col">
-        ${todoList.items.map((item) => TodoItem.render(item)).join('')}
+        ${todoList.items.map((item, index) => TodoItem.render({item, index})).join('')}
       </ul>
     </main>
 
@@ -19,7 +19,7 @@ let TodoList = {
     let todoInput = document.getElementsByClassName('create-todo__input')[0];
     let value = todoInput.value;
 
-    todoInput.value = 0;
+    todoInput.value = '';
 
     Observer.publish('action', {
       type: 'ADD_ITEM',
@@ -30,12 +30,10 @@ let TodoList = {
     });
   },
 
-  removeItem(item) {
-    console.log(item);
-
+  removeItem(index) {
     Observer.publish('action', {
       type: 'REMOVE_ITEM',
-      item
+      index
     });
   }
 }
