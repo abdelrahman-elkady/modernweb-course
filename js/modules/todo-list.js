@@ -5,7 +5,7 @@ let TodoList = {
     <main class="col f-3">
       <div class="row create-todo">
         <input type="text" class="create-todo__input" placeholder="Enter New To Do">
-        <button type="button" class="create-todo__submit-btn secondary-bg-color" onclick="TodoList.addItem(todoList)">+</button>
+        <button type="button" class="create-todo__submit-btn secondary-bg-color" onclick="TodoList.addItem()">+</button>
       </div>
       <ul class="todo-list col">
         ${todoList ? todoList.items.map((item, index) => TodoItem.render({item, index})).join('') : ''}
