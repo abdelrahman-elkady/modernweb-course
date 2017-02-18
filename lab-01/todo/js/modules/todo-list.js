@@ -8,7 +8,7 @@ let TodoList = {
         <button type="button" class="create-todo__submit-btn secondary-bg-color" onclick="TodoList.addItem(todoList)">+</button>
       </div>
       <ul class="todo-list col">
-        ${todoList.items.map((item, index) => TodoItem.render({item, index})).join('')}
+        ${todoList ? todoList.items.map((item, index) => TodoItem.render({item, index})).join('') : ''}
       </ul>
     </main>
 
