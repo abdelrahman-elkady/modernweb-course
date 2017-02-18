@@ -2,7 +2,7 @@ let TodoListList = {
   render({todo_list_list}) {
     return `
     <sidbar class="navigation col f-1">
-      <button type="button" class="create-list secondary-bg-color ">Create New List</button>
+      <button type="button" class="create-list secondary-bg-color" onclick="TodoListList.addList()">Create New List</button>
       <ul class="todo-list-list">
         ${todo_list_list.map((entry) => {
           return `<li class="todo-list-list__item primary-bg-color">
@@ -15,5 +15,16 @@ let TodoListList = {
       </ul>
     </sidbar>
     `
+  },
+
+  addList() {
+    let title = prompt('Enter the title of the new list');
+
+    if(title) {
+      Observer.publish('action', {
+        type: 'ADD_LIST',
+        title
+      });
+    }
   }
 }

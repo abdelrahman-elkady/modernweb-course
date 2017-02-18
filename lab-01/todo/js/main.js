@@ -45,6 +45,12 @@ Observer.on('action', action => {
       });
 
       break;
+
+    case 'ADD_LIST':
+      let newList = {title: action.title, items: []};
+      state.todo_list_list.push(newList);
+      state.selectedList = state.todo_list_list.length - 1;
+      break;
   }
 
   renderHTML(state)
