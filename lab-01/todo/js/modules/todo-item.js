@@ -6,9 +6,11 @@ let TodoItem = {
 
         <input class="todo-item__done" type="checkbox" ${item.done ? 'checked': ''}>
         <span class="todo-item__text">${item.text}</span>
-        <button class="todo-item__delete-btn">x</button>
+        <button class="todo-item__delete-btn" onclick="TodoList.removeItem(${item})">x</button>
       </div>
     </li>
     `
-  }
+  },
+
+
 }

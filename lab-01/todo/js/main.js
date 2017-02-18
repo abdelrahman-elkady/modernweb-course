@@ -32,11 +32,18 @@ renderHTML = newState => (document.body.innerHTML = App.render(newState));
 renderHTML(state);
 
 Observer.on('action', action => {
+  let selectedList = state.todo_list_list[state.selectedList];
 
   switch (action.type) {
     case 'ADD_ITEM':
-      let selectedList = state.todo_list_list[state.selectedList];
       selectedList.items.push(action.item);
+      break;
+
+    case 'REMOVE_ITEM':
+      selectedList.items = selectedList.items.filter(item => {
+        return item.text !== action.item.text && item.done !== action.item.done;
+      });
+
       break;
   }
 

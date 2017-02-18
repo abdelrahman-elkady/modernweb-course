@@ -5,7 +5,7 @@ let TodoList = {
     <main class="col f-3">
       <div class="row create-todo">
         <input type="text" class="create-todo__input" placeholder="Enter New To Do">
-        <button type="button" class="create-todo__submit-btn secondary-bg-color" onclick="TodoList.addItem()">+</button>
+        <button type="button" class="create-todo__submit-btn secondary-bg-color" onclick="TodoList.addItem(todoList)">+</button>
       </div>
       <ul class="todo-list col">
         ${todoList.items.map((item) => TodoItem.render(item)).join('')}
@@ -15,7 +15,7 @@ let TodoList = {
     `
   },
 
-  addItem(event) {
+  addItem() {
     let todoInput = document.getElementsByClassName('create-todo__input')[0];
     let value = todoInput.value;
 
@@ -27,6 +27,15 @@ let TodoList = {
         text: value,
         done: false
       }
+    });
+  },
+
+  removeItem(item) {
+    console.log(item);
+
+    Observer.publish('action', {
+      type: 'REMOVE_ITEM',
+      item
     });
   }
 }
