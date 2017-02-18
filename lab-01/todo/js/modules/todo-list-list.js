@@ -8,7 +8,7 @@ let TodoListList = {
           return `<li class="todo-list-list__item primary-bg-color" onclick="TodoListList.selectList(${index})">
             <a href="#" class="todo-list-list__todo-list">
               <span class="todo-list-list__todo-list__title">${entry.title}</span>
-              <button class="todo-list-list__todo-list__delete-btn">x</button>
+              <button class="todo-list-list__todo-list__delete-btn" onclick="TodoListList.removeList(${index})">x</button>
             </a>
           </li>`
         }).join('')}
@@ -31,6 +31,13 @@ let TodoListList = {
   selectList(index) {
     Observer.publish('action', {
       type: 'SELECT_LIST',
+      index
+    });
+  },
+
+  removeList(index) {
+    Observer.publish('action', {
+      type: 'REMOVE_LIST',
       index
     });
   }

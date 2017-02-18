@@ -40,15 +40,22 @@ Observer.on('action', action => {
       break;
 
     case 'REMOVE_ITEM':
-
       selectedList.items.splice(action.index, 1);
-
       break;
 
     case 'ADD_LIST':
-      let newList = {title: action.title, items: []};
+      let newList = {
+        title: action.title,
+        items: []
+      };
       state.todo_list_list.push(newList);
       state.selectedList = state.todo_list_list.length - 1;
+      break;
+
+    case 'REMOVE_LIST':
+      state.todo_list_list.splice(action.index, 1);
+      state.selectedList = 0;
+
       break;
 
     case 'SELECT_LIST':
