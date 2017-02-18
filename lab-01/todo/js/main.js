@@ -51,6 +51,10 @@ Observer.on('action', action => {
       state.todo_list_list.push(newList);
       state.selectedList = state.todo_list_list.length - 1;
       break;
+
+    case 'SELECT_LIST':
+      state.selectedList = action.index;
+      break;
   }
 
   renderHTML(state)
