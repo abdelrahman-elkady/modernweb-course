@@ -21,7 +21,7 @@ let TodoList = {
 
     todoInput.value = '';
 
-    Observer.publish('action', {
+    Observer.emit('action', {
       type: 'ADD_ITEM',
       item: {
         text: value,
@@ -31,14 +31,14 @@ let TodoList = {
   },
 
   removeItem(index) {
-    Observer.publish('action', {
+    Observer.emit('action', {
       type: 'REMOVE_ITEM',
       index
     });
   },
 
   toggleItem(index, value) {
-    Observer.publish('action', {
+    Observer.emit('action', {
       type: 'TOGGLE_ITEM',
       index,
       value

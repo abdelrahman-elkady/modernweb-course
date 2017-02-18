@@ -21,7 +21,7 @@ let TodoListList = {
     let title = prompt('Enter the title of the new list');
 
     if(title) {
-      Observer.publish('action', {
+      Observer.emit('action', {
         type: 'ADD_LIST',
         title
       });
@@ -29,14 +29,14 @@ let TodoListList = {
   },
 
   selectList(index) {
-    Observer.publish('action', {
+    Observer.emit('action', {
       type: 'SELECT_LIST',
       index
     });
   },
 
   removeList(index) {
-    Observer.publish('action', {
+    Observer.emit('action', {
       type: 'REMOVE_LIST',
       index
     });
