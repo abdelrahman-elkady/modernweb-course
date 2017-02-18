@@ -8,7 +8,7 @@ let App = {
 
       <div class="row">
         ${TodoListList.render(state)}
-        ${TodoList.render(state.todo_list_list[0])}
+        ${TodoList.render(state.todo_list_list[state.selectedList])}
       </div>
     </div>
     `

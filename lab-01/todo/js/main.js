@@ -23,7 +23,21 @@ let state = {
         }
       ]
     }
-  ]
+  ],
+
+  selectedList: 0
 }
 
-document.body.innerHTML = App.render(state)
+renderHTML = (newState) => (document.body.innerHTML = App.render(newState));
+renderHTML(state)
+Observer.on('action', (action) => {
+
+  switch (action.type) {
+    case 'BUTTON_CLICK':
+      state.message = action.message;
+      state.clickCount = action.clickCount;
+      break;
+  }
+
+  renderHTML(state)
+});
