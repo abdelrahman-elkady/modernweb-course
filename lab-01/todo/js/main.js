@@ -28,14 +28,15 @@ let state = {
   selectedList: 0
 }
 
-renderHTML = (newState) => (document.body.innerHTML = App.render(newState));
-renderHTML(state)
-Observer.on('action', (action) => {
+renderHTML = newState => (document.body.innerHTML = App.render(newState));
+renderHTML(state);
+
+Observer.on('action', action => {
 
   switch (action.type) {
-    case 'BUTTON_CLICK':
-      state.message = action.message;
-      state.clickCount = action.clickCount;
+    case 'ADD_ITEM':
+      let selectedList = state.todo_list_list[state.selectedList];
+      selectedList.items.push(action.item);
       break;
   }
 
