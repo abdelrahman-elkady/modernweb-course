@@ -15,7 +15,7 @@ export default class TodoList extends Component {
 
   renderItems() {
     return this.props.todoList.items.map((item, index) => {
-      return <TodoItem item={item} index={index} key={index} removeItem={this.props.removeItem} />
+      return <TodoItem item={item} index={index} key={index} removeItem={this.props.removeItem} toggleItem={this.props.toggleItem} />
     });
   }
 

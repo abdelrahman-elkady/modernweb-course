@@ -10,7 +10,7 @@ export default class TodoItem extends Component {
     return (
       <li className="todo-list__item">
         <div className="todo-item">
-          <input className="todo-item__done" type="checkbox" checked={this.props.item.done ? 'checked': ''} onChange={ () => {} } />
+          <input className="todo-item__done" type="checkbox" checked={this.props.item.done ? 'checked': ''} onChange={ () => {this.props.toggleItem(this.props.index)} } />
           <span className="todo-item__text">{this.props.item.text}</span>
           <button className="todo-item__delete-btn" onClick={ () => {this.props.removeItem(this.props.index)} }>x</button>
         </div>

@@ -82,6 +82,13 @@ class App extends Component {
     this.setState(todoListList);
   }
 
+  toggleItem(index) {
+    let todoListList = this.state.todoListList.slice();
+    todoListList[this.state.selectedList].items[index].done = !todoListList[this.state.selectedList].items[index].done;
+
+    this.setState(todoListList);
+  }
+
   render() {
     return (
       <div>
@@ -97,6 +104,7 @@ class App extends Component {
           <TodoList
             addItem={this.addItem.bind(this)}
             removeItem={this.removeItem.bind(this)}
+            toggleItem={this.toggleItem.bind(this)}
             todoList={this.state.todoListList[this.state.selectedList]} />
         </div>
 
