@@ -4,15 +4,9 @@ import './create-list.css';
 import './navigation.css';
 import './todo-list-list.css';
 
+import TodoList from '../TodoList/TodoList';
+
 export default class TodoListList extends Component {
-
-  selectList() {
-
-  }
-
-  removeList() {
-
-  }
 
   renderLists() {
     return this.props.lists.map((entry, index) => {
@@ -33,6 +27,7 @@ export default class TodoListList extends Component {
         <button type="button" className="create-list secondary-bg-color" onClick={() => this.props.addList()}>Create New List</button>
         <ul className="todo-list-list">
           {this.renderLists()}
+          <TodoList todoList={this.props.activeList} />
         </ul>
       </sidbar>
     );

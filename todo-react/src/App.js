@@ -60,8 +60,7 @@ class App extends Component {
         <Header/>
 
         <div className="row">
-          <TodoListList lists={this.state.todoListList} addList={this.addList.bind(this)}/>
-          {/* <TodoList/> */}
+          <TodoListList lists={this.state.todoListList} addList={this.addList.bind(this)} activeList={this.state.todoListList[this.state.selectedList]}/>
         </div>
 
       </div>
