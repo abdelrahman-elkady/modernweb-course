@@ -5,6 +5,8 @@ import TodoListList from './components/TodoListList/TodoListList';
 
 import './index.css';
 
+import TodoList from './components/TodoList/TodoList';
+
 class App extends Component {
 
   constructor() {
@@ -60,7 +62,8 @@ class App extends Component {
         <Header/>
 
         <div className="row">
-          <TodoListList lists={this.state.todoListList} addList={this.addList.bind(this)} activeList={this.state.todoListList[this.state.selectedList]}/>
+          <TodoListList lists={this.state.todoListList} addList={this.addList.bind(this)}/>
+          <TodoList todoList={this.state.todoListList[this.state.selectedList]} />
         </div>
 
       </div>
