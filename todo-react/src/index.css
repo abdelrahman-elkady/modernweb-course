@@ -55,3 +55,28 @@ button.secondary-bg-color:hover {
   background: linear-gradient(165deg,  #efcd7d 0%,#f9b331 50%,#f9b331 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efcd7d', endColorstr='#f9b331',GradientType=1 );
 }
+
+/* ============== Layout ============== */
+
+.row, .col {
+  display: flex;
+}
+.row {
+  flex-direction: row;
+}
+.col {
+  flex-direction: column;
+}
+
+.f-1 {
+  flex:1;
+}
+.f-2 {
+  flex: 2;
+}
+.f-3 {
+  flex: 3;
+}
+.f-4 {
+  flex: 4;
+}
