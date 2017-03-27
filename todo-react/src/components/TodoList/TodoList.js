@@ -8,6 +8,11 @@ import TodoItem from '../TodoItem/TodoItem';
 
 export default class TodoList extends Component {
 
+  constructor() {
+    super();
+    this.state = {itemText: ''};
+  }
+
   renderItem() {
     return this.props.todoList.items.map((item, index) => {
       return <TodoItem item={item} />
@@ -18,8 +23,8 @@ export default class TodoList extends Component {
     return (
       <main className="col f-3">
         <div className="row create-todo">
-          <input type="text" className="create-todo__input" placeholder="Enter New To Do"/>
-          <button type="button" className="create-todo__submit-btn secondary-bg-color" onClick={() => this.props.addItem()}>+</button>
+          <input type="text" className="create-todo__input" placeholder="Enter New To Do" value={this.state.itemText} onChange={ event => this.setState({itemText: event.target.value}) }/>
+          <button type="button" className="create-todo__submit-btn secondary-bg-color" onClick={() => {this.props.addItem(this.state.itemText); this.setState({itemText: ''})}}>+</button>
         </div>
         <ul className="todo-list col">
           {this.renderItem()}
