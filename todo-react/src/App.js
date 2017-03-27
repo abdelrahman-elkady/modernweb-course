@@ -56,13 +56,25 @@ class App extends Component {
     })
   }
 
+  removeList(index) {
+    let todoListList = this.state.todoListList.slice();
+    todoListList.splice(index, 1);
+    let selectedIndex = 0;
+
+    this.setState({todoListList, selectedIndex});
+  }
+
   render() {
     return (
       <div>
         <Header/>
 
         <div className="row">
-          <TodoListList lists={this.state.todoListList} addList={this.addList.bind(this)}/>
+          <TodoListList
+             lists={this.state.todoListList}
+             addList={this.addList.bind(this)}
+             removeList={this.removeList.bind(this)}/>
+             
           <TodoList todoList={this.state.todoListList[this.state.selectedList]} />
         </div>
 
