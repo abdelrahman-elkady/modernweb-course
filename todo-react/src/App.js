@@ -64,6 +64,10 @@ class App extends Component {
     this.setState({todoListList, selectedIndex});
   }
 
+  selectList(index) {
+    this.setState({selectedList: index});
+  }
+
   render() {
     return (
       <div>
@@ -73,8 +77,9 @@ class App extends Component {
           <TodoListList
              lists={this.state.todoListList}
              addList={this.addList.bind(this)}
+             selectList={this.selectList.bind(this)}
              removeList={this.removeList.bind(this)}/>
-             
+
           <TodoList todoList={this.state.todoListList[this.state.selectedList]} />
         </div>
 

@@ -9,7 +9,7 @@ export default class TodoListList extends Component {
   renderLists() {
     return this.props.lists.map((entry, index) => {
       return (
-        <li key={index} className="todo-list-list__item primary-bg-color" onClick={() => this.selectList(index)}>
+        <li key={index} className="todo-list-list__item primary-bg-color" onClick={() => this.props.selectList(index)}>
           <a href="#" className="todo-list-list__todo-list">
             <span className="todo-list-list__todo-list__title">{entry.title}</span>
             <button className="todo-list-list__todo-list__delete-btn" onClick={() => this.props.removeList(index)}>x</button>
