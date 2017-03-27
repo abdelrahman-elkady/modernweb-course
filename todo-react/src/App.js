@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import './stylesheets/base.css';
-import './App.css';
+import './index.css';
 
 class App extends Component {
   render() {
     return (
 
-      <div id="appContainer" class="col">
-        <header class="header row primary-bg-color">
-          <h1 class="header__title">To Do App</h1>
+      <div id="appContainer" className="col">
+        <header className="header row primary-bg-color">
+          <h1 className="header__title">To Do App</h1>
         </header>
 
-        <div class="row">
+        {/* <div className="row">
           <TodoListList />
           <TodoList />
-        </div>
+        </div> */}
       </div>
     );
   }
