@@ -13,9 +13,9 @@ export default class TodoList extends Component {
     this.state = {itemText: ''};
   }
 
-  renderItem() {
+  renderItems() {
     return this.props.todoList.items.map((item, index) => {
-      return <TodoItem item={item} />
+      return <TodoItem item={item} index={index} key={index} removeItem={this.props.removeItem} />
     });
   }
 
@@ -27,7 +27,7 @@ export default class TodoList extends Component {
           <button type="button" className="create-todo__submit-btn secondary-bg-color" onClick={() => {this.props.addItem(this.state.itemText); this.setState({itemText: ''})}}>+</button>
         </div>
         <ul className="todo-list col">
-          {this.renderItem()}
+          {this.renderItems()}
         </ul>
       </main>
     );
