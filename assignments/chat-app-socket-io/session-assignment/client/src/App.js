@@ -5,18 +5,36 @@ import io from 'socket.io-client';
 
 class App extends Component {
 
-  connect() {
-    let socket = io('localhost:3000');
+  constructor() {
+    super();
+    this.state = {message: '', socket: io('localhost:3000')}
+
+    this.handleMessageChange = this.handleMessageChange.bind(this);
+    this.handleMessageSend = this.handleMessageSend.bind(this);
+  }
+
+  handleMessageChange(event) {
+    this.setState({message: event.target.value});
+  }
+
+  handleMessageSend(event) {
+    event.preventDefault();
+
+    this.state.socket.emit('chat message', this.state.message);
+    this.resetInput();
+  }
+
+  resetInput() {
+    this.setState({message: ''});
   }
 
   render() {
     return (
       <div>
-        <button onClick={() => this.connect()}>Connect</button>
         <ul id="messages"></ul>
         <form action="">
-          <input id="m" autocomplete="off"/>
-          <button>Send</button>
+          <input value={this.state.message} onChange={this.handleMessageChange} autoComplete="off"/>
+          <button onClick={this.handleMessageSend}>Send</button>
         </form>
       </div>
     );
