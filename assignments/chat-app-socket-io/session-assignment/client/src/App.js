@@ -7,7 +7,17 @@ class App extends Component {
 
   constructor() {
     super();
-    this.state = {message: '', socket: io('localhost:3000')}
+    this.state = {
+      message: '',
+      messages: [],
+      socket: io('localhost:3000')
+    }
+
+    this.state.socket.on('chat message', msg => {
+      let messages = this.state.messages;
+      messages.push(msg);
+      this.setState({messages});
+    });
 
     this.handleMessageChange = this.handleMessageChange.bind(this);
     this.handleMessageSend = this.handleMessageSend.bind(this);
@@ -28,10 +38,20 @@ class App extends Component {
     this.setState({message: ''});
   }
 
+  generateMessageList() {
+    return this.state.messages.map((msg, index) => {
+      return (
+        <li key={index}>{msg}</li>
+      )
+    })
+  }
+
   render() {
     return (
       <div>
-        <ul id="messages"></ul>
+        <ul id="messages">
+          {this.generateMessageList()}
+        </ul>
         <form action="">
           <input value={this.state.message} onChange={this.handleMessageChange} autoComplete="off"/>
           <button onClick={this.handleMessageSend}>Send</button>
