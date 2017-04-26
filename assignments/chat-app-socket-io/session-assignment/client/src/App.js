@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import io from 'socket.io-client';
 
+import FacebookButton from './components/FacebookLogin/FacebookLogin';
+
 class App extends Component {
 
   constructor() {
@@ -10,7 +12,7 @@ class App extends Component {
     this.state = {
       message: '',
       messages: [],
-      socket: io('localhost:3000')
+      socket: io('localhost:1337')
     }
 
     this.state.socket.on('chat message', msg => {
@@ -49,6 +51,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <FacebookButton />
         <ul id="messages">
           {this.generateMessageList()}
         </ul>
