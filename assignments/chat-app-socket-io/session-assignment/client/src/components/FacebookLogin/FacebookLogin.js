@@ -9,10 +9,16 @@ export default class FacebookButton extends Component {
 
     this.state = {
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   responseFacebook(response) {
     console.log(response);
+  }
+
+  handleClick() {
+
   }
 
   render() {
@@ -21,6 +27,7 @@ export default class FacebookButton extends Component {
         appId={config.FB_APP_ID}
         autoLoad={true}
         fields="name,email,picture"
+        onClick={this.handleClick}
         callback={this.responseFacebook} />
     );
   }
