@@ -1,24 +1,25 @@
 import React, {Component} from 'react';
 import './App.css';
-import io from 'socket.io-client';
 
-import FacebookButton from './components/FacebookLogin/FacebookLogin';
-import Messenger from './components/Messenger';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-class App extends Component {
+import FacebookButton from './components/FacebookButton';
 
-  constructor() {
-    super();
-  }
+class Home extends Component {
 
   render() {
     return (
-      <div>
         <FacebookButton />
-        <Messenger />
-      </div>
     );
   }
+}
+
+const App = props => {
+  return (
+    <Router>
+      <Route exact path="/" component={Home}/>
+    </Router>
+  );
 }
 
 export default App;
