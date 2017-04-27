@@ -3,17 +3,24 @@ import FacebookLogin from 'react-facebook-login';
 
 import config from '../../conf/dev';
 
+import _ from 'lodash';
+
 export default class FacebookButton extends Component {
   constructor() {
     super();
 
     this.state = {
+      authenticated: false
     };
+
+    this.facebookCallback = this.facebookCallback.bind(this);
 
   }
 
   facebookCallback(response) {
-    console.log(response);
+    let authenticated = !_.isNil(response.id);
+
+    this.setState({authenticated});
   }
 
   render() {
