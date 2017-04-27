@@ -2,6 +2,7 @@ import './facebook.css';
 
 import React, {Component} from 'react';
 import FacebookLogin from 'react-facebook-login';
+import { Redirect } from 'react-router-dom'
 
 import config from '../../conf/dev';
 
@@ -26,6 +27,12 @@ export default class FacebookButton extends Component {
   }
 
   render() {
+
+
+    if(this.state.authenticated) {
+        return <Redirect to='/app'/>
+    }
+
     return (
       <FacebookLogin
         appId={config.FB_APP_ID}
