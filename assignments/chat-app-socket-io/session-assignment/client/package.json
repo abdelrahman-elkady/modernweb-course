@@ -6,6 +6,8 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-facebook-login": "^3.5.0",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
     "socket.io-client": "^1.7.3"
   },
   "devDependencies": {
