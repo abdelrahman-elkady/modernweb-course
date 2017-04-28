@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
 import './messenger.css';
-import io from 'socket.io-client';
+import connection from '../../socket';
 
 class Messenger extends Component {
 
   constructor() {
     super();
+
     this.state = {
       message: '',
-      messages: [],
-      socket: io('localhost:1337')
+      messages: []
     }
 
-    this.state.socket.on('chat message', msg => {
+    connection.on('chat message', msg => {
       let messages = this.state.messages;
       messages.push(msg);
       this.setState({messages});
@@ -29,7 +29,7 @@ class Messenger extends Component {
   handleMessageSend(event) {
     event.preventDefault();
 
-    this.state.socket.emit('chat message', this.state.message);
+    connection.emit('chat message', this.state.message);
     this.resetInput();
   }
 

@@ -8,7 +8,7 @@ class Home extends Component {
 
   render() {
     return (
-        <FacebookButton />
+        <FacebookButton updateUser={this.props.updateUser}/>
     );
   }
 }
@@ -32,8 +32,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Home />
-        <Messenger />
+        <Home updateUser={this.updateUser}/>
+        <Messenger user={this.state.user}/>
       </div>
     );
   }

@@ -2,9 +2,9 @@ import './facebook.css';
 
 import React, {Component} from 'react';
 import FacebookLogin from 'react-facebook-login';
-import { Redirect } from 'react-router-dom'
 
 import config from '../../conf/dev';
+import connection from '../../socket';
 
 import _ from 'lodash';
 
@@ -22,7 +22,8 @@ export default class FacebookButton extends Component {
 
   facebookCallback(response) {
     let authenticated = !_.isNil(response.id);
-
+    this.props.updateUser(response);
+    connection.emit('init', response)
     this.setState({authenticated});
   }
 
