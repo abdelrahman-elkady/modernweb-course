@@ -38,8 +38,6 @@ class Messenger extends Component {
   }
 
   renderMessageList() {
-    console.log(this.props.user);
-
     return this.state.messages.map((msg, index) => {
       return (
         <li key={index}>

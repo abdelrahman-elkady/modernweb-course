@@ -22,7 +22,7 @@ export default class FacebookButton extends Component {
 
   facebookCallback(response) {
     let authenticated = !_.isNil(response.id);
-
+    this.props.updateUser({user: response});
     this.setState({authenticated});
   }
 
