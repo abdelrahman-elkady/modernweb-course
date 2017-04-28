@@ -34,11 +34,13 @@ export default class FacebookButton extends Component {
     }
 
     return (
-      <FacebookLogin
-        appId={config.FB_APP_ID}
-        autoLoad={true}
-        fields="name,email,picture"
-        callback={this.facebookCallback} />
+      <div id="facebook-button-wrapper">
+        <FacebookLogin
+          appId={config.FB_APP_ID}
+          autoLoad={true}
+          fields="name,email,picture"
+          callback={this.facebookCallback} />
+      </div>
     );
   }
 

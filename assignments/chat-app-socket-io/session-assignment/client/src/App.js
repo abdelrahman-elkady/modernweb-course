@@ -36,7 +36,7 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={Home}/>
-          <Route path="/app" component={Messenger}/>
+          <Route path="/app" component={() => <Messenger user={this.state.user}/>}/>
         </div>
       </Router>
     );
