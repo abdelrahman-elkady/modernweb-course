@@ -38,6 +38,10 @@ io.on('connection', function(socket) {
     io.emit('chat message', {msg: msg, user});
   });
 
+  socket.on('typing', function(user) {
+    io.emit('typing', user);
+  });
+
 });
 
 http.listen(1337, function() {

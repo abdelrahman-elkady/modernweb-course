@@ -34,9 +34,16 @@ class UserList extends Component {
 
   render() {
     return (
-      <ul>
-        {this.renderUserList()}
-      </ul>
+      <div>
+        <h2>Connected users:</h2>
+
+        <ul>
+          {this.renderUserList()}
+        </ul>
+
+        <hr/>
+      </div>
+
     );
   }
 }

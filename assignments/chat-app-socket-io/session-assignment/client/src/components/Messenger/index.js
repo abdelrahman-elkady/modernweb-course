@@ -11,7 +11,8 @@ class Messenger extends Component {
 
     this.state = {
       message: '',
-      messages: []
+      messages: [],
+      typing: ''
     }
 
     connection.on('chat message', messageObject => {
@@ -20,11 +21,21 @@ class Messenger extends Component {
       this.setState({messages});
     });
 
+    connection.on('typing', user => {
+      let username = user.name;
+      this.setState({typing: username + ' is Typing ...'});
+    });
+
+
+    // one of the worst hacks I've implemented -_-
+    setInterval(() => this.setState({typing: ''}), 3000);
+
     this.handleMessageChange = this.handleMessageChange.bind(this);
     this.handleMessageSend = this.handleMessageSend.bind(this);
   }
 
   handleMessageChange(event) {
+    connection.emit('typing', this.props.user);
     this.setState({message: event.target.value});
   }
 
@@ -59,6 +70,7 @@ class Messenger extends Component {
         <ul id="messages">
           {this.renderMessageList()}
         </ul>
+        <span>{this.state.typing}</span>
         <form action="">
           <input value={this.state.message} onChange={this.handleMessageChange} autoComplete="off"/>
           <button onClick={this.handleMessageSend}>Send</button>
