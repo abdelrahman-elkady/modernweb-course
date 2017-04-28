@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
 import FacebookButton from './components/FacebookButton';
 import Messenger from './components/Messenger';
 
@@ -33,12 +31,10 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div>
-          <Route exact path="/" component={Home}/>
-          <Route path="/app" component={Messenger}/>
-        </div>
-      </Router>
+      <div>
+        <Home />
+        <Messenger />
+      </div>
     );
   }
 }

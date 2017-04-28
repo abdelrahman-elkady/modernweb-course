@@ -22,26 +22,24 @@ export default class FacebookButton extends Component {
 
   facebookCallback(response) {
     let authenticated = !_.isNil(response.id);
-    this.props.updateUser({user: response});
+
     this.setState({authenticated});
   }
 
   render() {
-
-
-    if(this.state.authenticated) {
-        return <Redirect to='/app'/>
+    if(!this.state.authenticated) {
+      return (
+        <div id="facebook-button-wrapper">
+          <FacebookLogin
+            appId={config.FB_APP_ID}
+            autoLoad={true}
+            fields="name,email,picture"
+            callback={this.facebookCallback} />
+        </div>
+      );
     }
 
-    return (
-      <div id="facebook-button-wrapper">
-        <FacebookLogin
-          appId={config.FB_APP_ID}
-          autoLoad={true}
-          fields="name,email,picture"
-          callback={this.facebookCallback} />
-      </div>
-    );
+    return null;
   }
 
 }
