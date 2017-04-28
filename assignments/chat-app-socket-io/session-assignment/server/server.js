@@ -19,7 +19,7 @@ io.on('connection', function(socket) {
 
   socket.on('init', function(user) {
     state.connectedUsers.push(_.extend(user, {socketId: socket.id}));
-    io.emit('user list', {users: state.connectedUsers});
+    io.emit('user list', state.connectedUsers);
   });
 
 
@@ -30,7 +30,7 @@ io.on('connection', function(socket) {
       _.find(state.connectedUsers, user => user.socketId === socket.id)
     );
 
-    io.emit('user list', {users: state.connectedUsers});
+    io.emit('user list', state.connectedUsers);
   });
 
   socket.on('chat message', function(msg) {

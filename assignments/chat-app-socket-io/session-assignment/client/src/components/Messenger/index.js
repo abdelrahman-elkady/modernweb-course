@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './messenger.css';
 import connection from '../../socket';
 
+import UserList from '../UserList';
+
 class Messenger extends Component {
 
   constructor() {
@@ -50,6 +52,8 @@ class Messenger extends Component {
   render() {
     return (
       <div>
+        <UserList />
+
         <ul id="messages">
           {this.renderMessageList()}
         </ul>
