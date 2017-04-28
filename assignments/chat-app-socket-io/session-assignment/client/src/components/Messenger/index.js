@@ -14,9 +14,9 @@ class Messenger extends Component {
       messages: []
     }
 
-    connection.on('chat message', msg => {
+    connection.on('chat message', messageObject => {
       let messages = this.state.messages;
-      messages.push(msg);
+      messages.push(messageObject);
       this.setState({messages});
     });
 
@@ -40,9 +40,11 @@ class Messenger extends Component {
   }
 
   renderMessageList() {
-    return this.state.messages.map((msg, index) => {
+    return this.state.messages.map(({msg, user}, index) => {
       return (
         <li key={index}>
+          <img src={user.picture.data.url}/>
+          {user.name}:
           {msg}
         </li>
       )

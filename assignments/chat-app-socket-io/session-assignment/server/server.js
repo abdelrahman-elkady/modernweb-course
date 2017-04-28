@@ -34,8 +34,8 @@ io.on('connection', function(socket) {
   });
 
   socket.on('chat message', function(msg) {
-    io.emit('chat message', msg);
-    console.log('message: ' + msg);
+    let user = _.find(state.connectedUsers, user => user.socketId === socket.id);
+    io.emit('chat message', {msg: msg, user});
   });
 
 });

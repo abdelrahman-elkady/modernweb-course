@@ -20,9 +20,9 @@ class UserList extends Component {
 
   renderUserList() {
     return (
-      this.state.users.map(user => {
+      this.state.users.map((user, index) => {
         return (
-          <li>
+          <li key={index}>
             <img src={user.picture.data.url}/>
             {user.name}
           </li>
