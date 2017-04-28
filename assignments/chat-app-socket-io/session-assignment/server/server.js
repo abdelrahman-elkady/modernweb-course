@@ -18,7 +18,7 @@ io.on('connection', function(socket) {
 
 
   socket.on('init', function(user) {
-    state.connectedUsers.push(user);
+    state.connectedUsers.push(_.extend(user, {socketId: socket.id}));
 
     socket.emit('user list', {users: state.connectedUsers});
   });
