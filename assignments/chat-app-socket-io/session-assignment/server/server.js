@@ -19,13 +19,18 @@ io.on('connection', function(socket) {
 
   socket.on('init', function(user) {
     state.connectedUsers.push(_.extend(user, {socketId: socket.id}));
-
-    socket.emit('user list', {users: state.connectedUsers});
+    io.emit('user list', {users: state.connectedUsers});
   });
 
 
   socket.on('disconnect', function() {
     console.log('user disconnected');
+
+    state.connectedUsers = _.pull(state.connectedUsers,
+      _.find(state.connectedUsers, user => user.socketId === socket.id)
+    );
+
+    io.emit('user list', {users: state.connectedUsers});
   });
 
   socket.on('chat message', function(msg) {
