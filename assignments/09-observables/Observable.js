@@ -32,4 +32,12 @@ export default class Observable {
 
     this.data.forEach(item => next(this._next(item)));
   }
+
+  static map(stream$, f) {
+    console.log(f.toString());
+    console.log('_next ' +stream$._next(f).toString());
+
+    return new Observable(stream$.data, {next: item => stream$._next(f(item)) , error: stream$._error, complete: stream$._complete} )
+  }
+
 }

@@ -7,3 +7,9 @@ stream$.subscribe({
 });
 
 stream$.push(4);
+
+let mappedStream$ = Observable.map(stream$, item => item * 2 );
+
+mappedStream$.subscribe({
+  next: el => console.log(el)
+})
