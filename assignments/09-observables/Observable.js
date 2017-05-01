@@ -1,12 +1,14 @@
 import _ from 'lodash';
 
 export default class Observable {
-  constructor(data=[], handlers) {
+  constructor(data = [], handlers) {
 
-    if(_.isNil(handlers)) {
+    if (_.isNil(handlers)) {
       handlers = {
         next: el => el,
-        error: err => { throw err },
+        error: err => {
+          throw err
+        },
         complete: () => true
       }
     }
@@ -34,10 +36,19 @@ export default class Observable {
   }
 
   static map(stream$, f) {
-    console.log(f.toString());
-    console.log('_next ' +stream$._next(f).toString());
+    return new Observable(stream$.data, {
+      next: item => stream$._next(f(item)),
+      error: stream$._error,
+      complete: stream$._complete
+    });
+  }
 
-    return new Observable(stream$.data, {next: item => stream$._next(f(item)) , error: stream$._error, complete: stream$._complete} )
+  static filter(stream$, predicate) {
+    return new Observable(stream$.data, {
+      next: item => predicate(item) && stream$._next(item),
+      error: stream$._error,
+      complete: stream$._complete
+    });
   }
 
 }
